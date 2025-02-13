@@ -307,37 +307,6 @@ img {
   overflow: auto;
   border-radius: 10px;
 }
-#text-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    background-color: var(--red-light);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-#text-container p {
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-    color: #333;
-    margin: 10px 0;
-}
-
-#continue-btn {
-    background-color: var(--red-answer);
-    color: white;
-    font-size: 20px;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    display: block;
-    margin: 20px auto;
-}
 
 @media (max-width: 500px) {
     #form input{
