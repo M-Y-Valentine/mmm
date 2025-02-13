@@ -8,21 +8,49 @@ input.id = number
 let currentImageIndex = 0;
 const totalImages = 17;
 
-function showNextImage() {
-    currentImageIndex = (currentImageIndex % totalImages) + 1;
-    document.getElementById('img').style.animation = 'fade2 8s infinite ease-in-out  forwards'
-    setTimeout(() => {
-        document.getElementById('img').src = `images/${currentImageIndex}.jpg`;
-    }, 4000)
+function answer() {
+    const text = input.value.trim().toLowerCase();
+    const error = document.getElementById('error');
+    
+    if (text.includes('no')) {
+        input.value = '';
+        error.innerHTML = 'Not what I wanted to hear!<br>I will ask you AGAIN:';
+    } else if (text.includes('maybe')) {
+        input.value = '';
+        error.innerHTML = 'Make it a Yes, Make it a Yes<br> Pleeeeaaaase:';
+    } else if (text.includes('yes')) {
+        input.value = '';
+        error.innerHTML = 'As you should :)!';
+        
+        // Fade out card and form
+        setTimeout(() => {
+            card.style.animation = 'fade 3s ease-in-out forwards';
+            form.style.animation = 'fade 3s ease-in-out forwards';
+        }, 1000);
+        
+        setTimeout(() => {
+            card.style.display = 'none';
+            form.style.display = 'none';
+
+            // Show Arabic text
+            document.getElementById('text-container').style.display = 'block';
+        }, 3000);
+    } else {
+        input.value = '';
+        error.innerHTML = "It's a yes or no type of question!";
+    }
 }
+
+// Show Persian text after clicking Arabic text
 function showTranslation() {
     document.getElementById("arabic-text").style.display = "none";
     document.getElementById("persian-text").style.display = "block";
-    document.getElementById("continue-btn").style.display = "block";
 }
 
+// Start the slideshow after clicking Persian text
 function startSlideshow() {
     document.getElementById("text-container").style.animation = "fade 2s ease-in-out forwards";
+
     setTimeout(() => {
         document.getElementById("text-container").style.display = "none";
         document.getElementById("slides").style.display = "block";
@@ -31,46 +59,6 @@ function startSlideshow() {
     }, 2000);
 }
 
-
-card.addEventListener('click', () => {
-    if (heart1.style.animation.includes("open")) {
-        heart1.style.animation='closeLeft 2s ease-in-out  forwards'
-    } else {
-        heart1.style.animation='openLeft 2s ease-in-out  forwards'
-    }
-    if (heart2.style.animation.includes("open")) {
-        heart2.style.animation='closeRight 2s ease-in-out  forwards'
-    } else {
-        heart2.style.animation='openRight 2s ease-in-out  forwards'
-    }
-})
-
-function answer() {
-    const text = input.value.trim().toLowerCase()
-    const error = document.getElementById('error')
-    if (text.includes('no')) {
-        input.value = ''
-        error.innerHTML = 'Not what I wanted to hear!<br>I will ask you AGAIN:'
-    }
-    else if(text.includes('maybe')) {
-        input.value = ''
-        error.innerHTML = 'Make it a Yes, Make it a Yes<br> Pleeeeaaaase:'
-    }
-    else if(text.includes('yes')) {
-        input.value = ''
-        error.innerHTML = 'As you should :)!'
-        setTimeout(() =>{
-            card.style.animation = 'fade 3s ease-in-out  forwards'
-            form.style.animation = 'fade 3s ease-in-out  forwards'
-          }, 1000);
-          setTimeout(() =>{
-            card.style.display = 'none'
-            form.style.display = 'none'
-            document.getElementById('slides').style.display = 'block'
-            showNextImage()
-            setInterval(showNextImage, 8000);
-          }, 3000);
-    }
     else {
         input.value = ''
         error.innerHTML = "It's a yes or no type of question!"
