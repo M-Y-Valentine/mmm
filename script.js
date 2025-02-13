@@ -33,6 +33,7 @@ card.addEventListener('click', () => {
 function answer() {
     const text = input.value.trim().toLowerCase()
     const error = document.getElementById('error')
+    const music = document.getElementById("bg-music");
     if (text.includes('no')) {
         input.value = ''
         error.innerHTML = 'Not what I wanted to hear!<br>I will ask you AGAIN:'
@@ -51,6 +52,7 @@ function answer() {
           setTimeout(() =>{
             card.style.display = 'none'
             form.style.display = 'none'
+            music.play();
             document.getElementById('slides').style.display = 'block'
             showNextImage()
             setInterval(showNextImage, 8000);
