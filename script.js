@@ -6,7 +6,7 @@ const form = document.getElementById('form')
 const number = Math.floor(Math.random() * 100000000)
 input.id = number
 let currentImageIndex = 0;
-const totalImages = 14;
+const totalImages = 17;
 
 function showNextImage() {
     currentImageIndex = (currentImageIndex % totalImages) + 1;
