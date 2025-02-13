@@ -15,6 +15,21 @@ function showNextImage() {
         document.getElementById('img').src = `images/${currentImageIndex}.jpg`;
     }, 4000)
 }
+function showTranslation() {
+    document.getElementById("arabic-text").style.display = "none";
+    document.getElementById("persian-text").style.display = "block";
+    document.getElementById("continue-btn").style.display = "block";
+}
+
+function startSlideshow() {
+    document.getElementById("text-container").style.animation = "fade 2s ease-in-out forwards";
+    setTimeout(() => {
+        document.getElementById("text-container").style.display = "none";
+        document.getElementById("slides").style.display = "block";
+        showNextImage();
+        setInterval(showNextImage, 8000);
+    }, 2000);
+}
 
 
 card.addEventListener('click', () => {
